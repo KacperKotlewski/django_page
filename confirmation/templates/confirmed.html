@@ -1,0 +1,9 @@
+{% extends 'template.html' %}
+
+{% block content %}
+    <p class="lead">
+        <div class="alert alert-success" role="alert">
+            Potwierdzono zamówienie {{order.product.product_type}} "{{order.product.title}}"
+        </div>
+    </p>
+{% endblock %}

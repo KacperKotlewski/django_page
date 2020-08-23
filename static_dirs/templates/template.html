@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Exo%7CExo+2&subset=latin,latin-ext" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/81686d98c9.js" crossorigin="anonymous"></script>
+    {% load static %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/template.css' %}">
+
+    <title>{{title}}</title>
+
+    {% block head %}
+    {% endblock %}
+</head>
+<body class="text-center">
+    {% load static %}
+    <div class="bg-image" style="background-image: url('https://drive.google.com/uc?id=1MlNzzHsAM7Xp50J9_HkbITv3L0aw_dL-');"></div>
+
+    <div id="page_container" class="d-flex flex-column">
+        <header class="masthead mb-auto cover-container d-flex w-100 p-3 mx-auto flex-column">
+            <div class="inner">
+                <h3 class="masthead-brand">{{title}}</h3>
+                <nav class="nav nav-masthead justify-content-center">
+                    <li class="nav-link"><a class="{% if nav_name == 'Home' %} active {% endif %}" href="/track/fragmenty">Płyta</a></li>
+                    <li class="nav-link"><a class="{% if nav_name == 'Home' %} active {% endif %}" href="/order/album/fragmenty">Zamów</a></li>
+                    <!--
+                    <li class="nav-link">
+                        <a class="{% if nav_name == 'Albumy' %} active {% endif %}" href="/track">Albumy</a>
+                        <div class="submenu">
+                            <ul>
+                                {% for album in all_tracks %}
+                                <li class="nav-link">
+                                    <a class="{% if nav_name == album.title %} active {% endif %}" href="/track/{{album.friendly_link}}">{{album.title}}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                    -->
+                </nav>
+                
+                <aside id="external-links">
+                    <div>
+                        {% for link in external_links %}
+                            <a alt="{{link.page_name}}" href="{{link.link}}" {% if link.to_new_tab %}target="_blank">{% endif %} <i class="fab fa-{{link.font_awesome_icon}}"></i></a>
+                        {% endfor %}
+                    </div>
+                </aside>
+            </div>
+        </header>
+
+        <div class="cover-container d-flex w-100 p-3 mx-auto flex-column align-items-center">
+            <main role="main" class="inner cover ">
+                {% block content %}
+                
+                {% endblock %}
+            </main>
+        </div>
+
+        <footer class="mastfoot mt-auto">
+            <div class="inner">
+            <p>Made by Kacper Kotlewski</p>
+            </div>
+        </footer>
+    </div>
+
+
+
+</body>
+</html>

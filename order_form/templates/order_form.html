@@ -1,0 +1,17 @@
+{% extends 'template.html' %}
+
+{% block content %}
+    <h1 class="cover-heading">Zamów {{product.product_type}}</h1>
+    <br>
+    <p class="lead">
+        {% load crispy_forms_tags %}
+        <form method="post" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Musisz zaznaczyć zgodę na przetwarzanie danych'); return false; }">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {% load humanize %}
+            <span class="vertical-center">*cena za sztukę {{product.price|floatformat:"2"|intcomma}}zł</span>
+            <div id="agreement"><input type="checkbox" name="checkbox" value="check" id="agree" />Zgoda na przetwarezanie danych osobowych w celach dostarczenia powyższego produktu</div>            
+            <input type="submit" value="Zamów" class="btn btn-lg btn-secondary"/>
+        </form>
+    </p>
+{% endblock %}

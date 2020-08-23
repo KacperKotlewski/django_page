@@ -1,0 +1,28 @@
+{% extends 'template.html' %}
+
+{% block content %}
+{% if multiple_content == True %}
+<div class="d-flex flex-wrap justify-content-around">
+    {% for album in track %}
+    <div class="d-flex p-2 bd-highlight flex-column text-center">
+        <h2 class="cover-heading text-center">{{album.title}}</h2>
+        <div class="img" style='background-image: url("{{album.image.url}}"); margin-bottom:10px;' >
+        </div>        
+        <p class="lead">
+            <a href="/track/{{album.friendly_link}}" class="btn btn-lg btn-secondary">Sprawdź</a>
+        </p>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+    <div class="img" style='background-image: url("{{track.image.url}}"); margin-bottom:10px;'></div>
+    <br>
+    <p class="lead"><span class="text-field">
+        {{ track.description|safe }}
+    </span>
+    </p>
+    <p class="lead">
+        <a href="/order/album/{{track.friendly_link}}" class="btn btn-lg btn-secondary">Zamów teraz</a>
+    </p>
+{% endif %}
+{% endblock %}

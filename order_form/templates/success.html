@@ -1,0 +1,9 @@
+{% extends 'template.html' %}
+
+{% block content %}
+    <p class="lead">
+        <div class="alert alert-success" role="alert">
+            Wysłano potwierdzenie zamówienia {{order.product.product_type}} "{{order.product.title}}" na twój e-mail, sprawdź skrzynkę i potwierdź klikając w link
+        </div>
+    </p>
+{% endblock %}

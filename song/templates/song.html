@@ -1,0 +1,43 @@
+{% extends 'template.html' %}
+
+
+{% block content %}
+
+{% if multiple_content == True %}
+    <div class="d-flex flex-wrap justify-content-around">
+        {% for single_song in song %}
+        <div class="d-flex p-2 bd-highlight flex-column text-center">
+            <div id="playlist-grid">
+                {% if single_song.image.url != None %}
+                    <div class="img" style='background-image: url("{{single_song.image.url}}");' ></div>
+                {% else %}
+                    <div class="img" style='background-image: url("{{track.image.url}}");' ></div>
+                {% endif %}
+                <h2 class="cover-heading">{{single_song.title}}</h2>
+                <audio controls controlsList="nodownload">
+                    <source src="{{ single_song.audio.url }}" type="audio/mpeg">
+                    Twoja przeglądarka nie wspiera odtwarzania audio.
+                </audio>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="d-flex flex-wrap justify-content-around">
+        <p class="lead">
+            <a href="/track/{{track.friendly_link}}" class="btn btn-lg btn-secondary">O albumie</a>
+            <a href="/order/album/{{track.friendly_link}}" class="btn btn-lg btn-secondary">Zamów teraz</a>
+        </p>
+    </div>
+{% else %}
+    <div class="img" style='background-image: url("{{bg_image.url}}"); margin-bottom:10px;'></div>
+    <h1 class="cover-heading">{{track.title}} | {{song.title}}</h1>
+    <br>
+    <audio controls controlsList="nodownload">
+        <source src="{{ song.url }}" type="audio/mpeg">
+        Twoja przeglądarka nie wspiera odtwarzania audio.
+    </audio>
+    <p class="lead">
+        <a href="/track/{{track.friendly_link}}/song" class="btn btn-lg btn-secondary">Przesłuchaj wszystkie utwory z albumu</a><br>
+    </p>
+{% endif %}
+{% endblock %}
