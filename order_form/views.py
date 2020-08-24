@@ -37,7 +37,7 @@ def Order(request, product_type=None, product_link=None):
     ctx.update( {"form":form, "product" : product_to_order } )
 
     if product_to_order == None:
-        return redirect("homepage")
+        return render(request, "order_not_found.html", {"product":product_link})
     return render(request, "order_form.html", ctx)
 
 def Success(request, ctx, order=None):
