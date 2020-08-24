@@ -50,6 +50,6 @@ after register you can press button "zamów teraz" on your track to go to order 
 ### songs
 I add even an option to register your mp3 on page and listen that but my client decide to not use that feature
 
-if you add one you can gat into this by enter to ```http://localhost:8000/track/<your tack name></your>/song```
+if you add one you can gat into this by enter to ```http://localhost:8000/track/<your tack name>/song```
 ![image5](screenshoots/songs.jpg)
 ![image5](screenshoots/songs%20example.jpg)
